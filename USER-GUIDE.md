@@ -10,7 +10,7 @@ It is most useful on sites that block the whole page until you accept cookies.
 
 ## What you need
 
-- A web browser such as Chrome or Edge
+- A web browser such as Chrome, Edge, or Firefox
 - Internet access
 - About 5 minutes
 
@@ -42,7 +42,7 @@ This opens a simple page with a brown button.
 ### Easiest way
 
 1. Make sure the bookmarks bar is visible:
-   - Chrome / Edge: press **Ctrl + Shift + B**
+   - Chrome / Edge / Firefox: press **Ctrl + Shift + B**
 2. Drag the brown **Remove cookie pop-up** button to the bookmarks bar.
 
 ### If dragging does not work
@@ -67,14 +67,22 @@ Some websites show the cookie message again later. If that happens, just click t
 If you want the tool to run automatically, you can use the browser extension version.
 This is more advanced than the bookmarklet.
 
+### Chrome / Edge
+
 1. Open `chrome://extensions` or `edge://extensions`.
 2. Turn on **Developer mode**.
 3. Click **Load unpacked**.
 4. Choose the **extension** folder from this project.
+
+### Firefox
+
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on**.
+3. Open the **extension** folder from this project.
+4. Choose the **manifest.json** file.
 
 ## If something goes wrong
 
 - If the page does not change, refresh the page and click the bookmark again.
 - If the bookmark is missing, show the bookmarks bar again with **Ctrl + Shift + B**.
 - If you are on a work or school computer, the extension may be blocked. Use the bookmarklet instead.
-

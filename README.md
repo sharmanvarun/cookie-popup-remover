@@ -11,8 +11,8 @@ Deleting the popup by hand does not always help, because the site may also lock
 scrolling. This tool removes the popup *and* undoes that lock.
 
 The easiest way to use it is the **bookmarklet**. It does not need any browser
-extension install. An optional extension is included for personal/unmanaged
-browsers.
+extension install and works in Chrome, Edge, and Firefox. An optional extension
+is included for personal/unmanaged browsers.
 
 ---
 
@@ -113,9 +113,17 @@ clickable again.
 Only usable if your browser allows **unpacked/developer extensions** (many
 managed/work machines block this — which is why the bookmarklet exists).
 
+### Chrome / Edge
+
 1. Go to `edge://extensions` or `chrome://extensions`.
 2. Enable **Developer mode**.
 3. Click **Load unpacked** and select the **`extension/`** folder.
+
+### Firefox
+
+1. Go to `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on**.
+3. Choose the **`extension/manifest.json`** file.
 
 It then cleans cookie walls **automatically** on every page, adds a toolbar
 button (“Remove pop‑up now”, plus toggles), and a keyboard shortcut
