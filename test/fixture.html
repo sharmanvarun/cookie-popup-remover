@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Fake cookie wall (vg.no style)</title>
+<style>
+  /* Scroll-lock applied by the "CMP", like vg.no / Sourcepoint does. */
+  html { overflow: hidden !important; }
+  body.modal-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    top: -200px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  #content { padding: 20px; }
+  .tall { height: 3000px; background: linear-gradient(#fff, #eee); }
+  /* Backdrop veil */
+  .sp_veil {
+    position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 2147483646;
+  }
+  /* Consent dialog container */
+  #sp_message_container_920123 {
+    position: fixed; inset: 0; z-index: 2147483647; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .box { background: #fff; padding: 30px; border-radius: 8px; max-width: 400px; }
+</style>
+</head>
+<body class="modal-open">
+  <div id="content">
+    <h1>News article headline</h1>
+    <p><a href="#a">link one</a> <a href="#b">link two</a></p>
+    <div class="tall">Lots of scrollable article content…</div>
+    <p id="bottom">The very bottom of the article.</p>
+  </div>
+
+  <div class="sp_veil"></div>
+  <div id="sp_message_container_920123" role="dialog" aria-modal="true" aria-label="Cookie consent">
+    <div class="box">
+      <h2>We value your privacy 🍪</h2>
+      <p>We use cookies. Please accept to continue.</p>
+      <button>Accept all cookies</button>
+    </div>
+  </div>
+</body>
+</html>

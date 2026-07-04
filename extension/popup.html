@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cookie Popup Remover</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      width: 260px;
+      margin: 0;
+      padding: 14px 16px 16px;
+      background: #ffffff;
+      color: #1a1a1a;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1f1f1f; color: #f2f2f2; }
+      .row small { color: #b9b9b9; }
+      .btn { background: #8b5a2b; }
+      .btn:hover { background: #a06a34; }
+    }
+    h1 {
+      font-size: 15px;
+      margin: 0 0 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sub { font-size: 11px; opacity: .7; margin: 0 0 12px; }
+    .btn {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      background: #8b5a2b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+    .btn:hover { background: #a06a34; }
+    .row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+    .row input { margin-top: 2px; }
+    .row label { cursor: pointer; }
+    .row small { display: block; opacity: .65; font-size: 11px; }
+    #status {
+      font-size: 12px;
+      min-height: 16px;
+      margin-top: 6px;
+      color: #2e7d32;
+    }
+    hr { border: 0; border-top: 1px solid rgba(128,128,128,.25); margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>🍪 Cookie Popup Remover</h1>
+  <p class="sub">Removes consent popups &amp; restores scrolling.</p>
+
+  <button id="removeNow" class="btn">Remove pop-up now</button>
+  <div id="status"></div>
+
+  <hr />
+
+  <div class="row">
+    <input type="checkbox" id="enabled" />
+    <label for="enabled">
+      Run automatically
+      <small>Clean every page as it loads.</small>
+    </label>
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="aggressive" />
+    <label for="aggressive">
+      Aggressive mode
+      <small>Also removes generic full-screen overlays. May affect other modals.</small>
+    </label>
+  </div>
+
+  <div class="row">
+    <input type="checkbox" id="disableHost" />
+    <label for="disableHost">
+      Disable on <span id="hostName">this site</span>
+    </label>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

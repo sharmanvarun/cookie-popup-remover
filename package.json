@@ -1,0 +1,20 @@
+{
+  "name": "cookie-remover",
+  "version": "1.0.0",
+  "description": "Bookmarklet that removes cookie-consent popups and restores page scrolling (e.g. vg.no).",
+  "main": "bookmarklet/build.js",
+  "scripts": {
+    "build": "node bookmarklet/build.js",
+    "test": "node test/run.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "terser": "^5.48.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.3.0"
+  }
+}

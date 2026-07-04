@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8" />
+<title>vg.no-style race: full-screen app shell + consent wall</title>
+<style>
+  /* Scroll-lock applied by the CMP (Sourcepoint), like vg.no does. */
+  html { overflow: hidden !important; }
+  body.sp-message-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    top: -300px; left: 0; right: 0; width: 100%;
+  }
+
+  /*
+   * The app shell: a full-viewport, position:fixed, high z-index wrapper that
+   * holds the real article. On an SPA like vg.no this can be present (and only
+   * partially hydrated -> few links) at the moment the bookmarklet runs. The
+   * OLD heuristic removed it -> white page. It MUST be preserved.
+   */
+  #app-shell {
+    position: fixed; inset: 0; z-index: 2000; overflow: auto;
+    background: #fff;
+  }
+  #application { padding: 20px; }
+  .tall { height: 3000px; background: linear-gradient(#fff, #eee); }
+
+  /* Sourcepoint backdrop veil + dialog container (must be removed). */
+  .sp_veil {
+    position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 2147483646;
+  }
+  #sp_message_container_920123 {
+    position: fixed; inset: 0; z-index: 2147483647; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .box { background: #fff; padding: 30px; border-radius: 8px; max-width: 400px; }
+</style>
+</head>
+<body class="sp-message-open">
+  <!-- Full-screen fixed app shell wrapping the real content (few links: mimics
+       partial hydration). Contains <main>, so it is a layout wrapper. -->
+  <div id="app-shell">
+    <main id="application" class="article-main">
+      <h1>Islendinger om Norges VM-suksess som religion</h1>
+      <p>Real article content that must survive. <a href="#a">Én lenke</a></p>
+      <div class="tall">Mye rullbart artikkelinnhold …</div>
+      <p id="bottom">Bunnen av artikkelen.</p>
+    </main>
+  </div>
+
+  <!-- The consent wall (Sourcepoint). Must be removed. -->
+  <div class="sp_veil"></div>
+  <div id="sp_message_container_920123" role="dialog" aria-modal="true" aria-label="Cookie consent">
+    <div class="box">
+      <h2>Vi verdsetter personvernet ditt 🍪</h2>
+      <p>Vi bruker informasjonskapsler. Godta for å fortsette.</p>
+      <button>Godta alle</button>
+    </div>
+  </div>
+</body>
+</html>
