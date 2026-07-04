@@ -1,5 +1,5 @@
 /*
- * Cookie Popup Remover — background service worker.
+ * Cookie Popup Remover — background script.
  * Handles the keyboard shortcut (Alt+Shift+C) to force a removal pass.
  */
 chrome.commands.onCommand.addListener(function (command) {
@@ -10,20 +10,12 @@ chrome.commands.onCommand.addListener(function (command) {
     chrome.tabs.sendMessage(tabId, { type: "run-now", aggressive: true }, function () {
       // If the content script wasn't there (e.g. injected after load), inject and retry.
       if (chrome.runtime.lastError) {
-        chrome.scripting.executeScript(
-          { target: { tabId: tabId, allFrames: true }, files: ["core.js"] },
-          function () {
-            chrome.scripting.executeScript({
-              target: { tabId: tabId, allFrames: true },
-              func: function () {
-                if (window.__cookieRemover) {
-                  window.__cookieRemover.run({ aggressive: true });
-                  window.__cookieRemover.startWatching({ aggressive: true });
-                }
-              }
-            });
-          }
-        );
+        chrome.tabs.executeScript(tabId, { file: "core.js", allFrames: true }, function () {
+          chrome.tabs.executeScript(tabId, {
+            code: "if (window.__cookieRemover) { window.__cookieRemover.run({ aggressive: true }); window.__cookieRemover.startWatching({ aggressive: true }); }",
+            allFrames: true
+          });
+        });
       }
     });
   });

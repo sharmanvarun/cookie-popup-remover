@@ -65,22 +65,14 @@
       chrome.tabs.sendMessage(tab.id, { type: "run-now", aggressive: true }, function (resp) {
         if (chrome.runtime.lastError || !resp) {
           // Content script not present — inject and run directly.
-          chrome.scripting.executeScript(
-            { target: { tabId: tab.id, allFrames: true }, files: ["core.js"] },
-            function () {
-              chrome.scripting.executeScript({
-                target: { tabId: tab.id, allFrames: true },
-                func: function () {
-                  if (window.__cookieRemover) {
-                    window.__cookieRemover.run({ aggressive: true });
-                    window.__cookieRemover.startWatching({ aggressive: true });
-                  }
-                }
-              }, function () {
-                setStatus(chrome.runtime.lastError ? "Can't run on this page." : "Done ✓");
-              });
-            }
-          );
+          chrome.tabs.executeScript(tab.id, { file: "core.js", allFrames: true }, function () {
+            chrome.tabs.executeScript(tab.id, {
+              code: "if (window.__cookieRemover) { window.__cookieRemover.run({ aggressive: true }); window.__cookieRemover.startWatching({ aggressive: true }); }",
+              allFrames: true
+            }, function () {
+              setStatus(chrome.runtime.lastError ? "Can't run on this page." : "Done ✓");
+            });
+          });
           return;
         }
         var st = resp.stats || {};

@@ -77,7 +77,7 @@ cookie-remover/
 │  ├─ bookmarklet.min.js   # minified output (generated)
 │  ├─ bookmarklet.html     # drag‑to‑install page (generated)
 │  └─ build.js             # minifies src -> min + html
-├─ extension/              # optional MV3 extension (unmanaged browsers only)
+├─ extension/              # optional browser extension (Chrome, Edge, Firefox)
 │  ├─ manifest.json
 │  ├─ core.js              # shared removal engine
 │  ├─ content.js           # auto‑runs on each page
